@@ -9,7 +9,7 @@ const zip = document.getElementById("zip");
 async function getWeatherData() {
   try {
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?zip=${zip.value},in&appid=${apiKey}&units=imperial`
+      `https://api.openweathermap.org/data/2.5/weather?zip=${zip.value}&appid=${apiKey}&units=imperial`
     );
     const data = await response.json();
     const dataToSend = {
