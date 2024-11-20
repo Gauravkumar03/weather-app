@@ -3,9 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 // Setup empty JS object to act as endpoint for all routes
-projectData = {
-    "key": "I am some JSON response"
-};
+let projectData = {}
 
 // Start up an instance of app
 const app = express()
@@ -20,6 +18,12 @@ app.use(cors())
 app.get('/data', (req, res) => {
     res.json(projectData)
 })
+
+app.post('/data', (req, res) => {
+    const receivedData = req.body; // Access the data sent from the frontend
+    projectData = receivedData
+    res.send('posted successfully')
+  });
 
 // Initialize the main project folder
 app.use(express.static('website'));
